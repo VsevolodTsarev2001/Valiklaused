@@ -7,94 +7,94 @@ from random import *
 
 #1
 #for
-r=0
-for i in range(15):
-    arv=float(input("Sisesta {0}.arv".format(i+1)))
-    if arv==int(arv):
-        r+=1
-print("Täisarvude arv on "+str(r))
+#r=0
+#for i in range(15):
+#    arv=float(input("Sisesta {0}.arv".format(i+1)))
+#    if arv==int(arv):
+#        r+=1
+#print("Täisarvude arv on "+str(r))
 
-#while True
-r=0
-i=0
-while True:
-    i+=1
-    arv=float(input("Sisesta {0}.arv ".format(i)))
-    if arv==int(arv):
-        r+=1
-    if i==15: break
-print("Täisarvude arv on "+str(r))
+##while True
+#r=0
+#i=0
+#while True:
+#    i+=1
+#    arv=float(input("Sisesta {0}.arv ".format(i)))
+#    if arv==int(arv):
+#        r+=1
+#    if i==15: break
+#print("Täisarvude arv on "+str(r))
 
-#while tingimustega
-r=0
-i=0
-while i<15:
-    i+=1
-    arv=float(input("Sisesta {0}.arv ".format(i)))
-    if arv==int(arv):
-        r+=1
-print("Täisarvude arv on "+str(r))
+##while tingimustega
+#r=0
+#i=0
+#while i<15:
+#    i+=1
+#    arv=float(input("Sisesta {0}.arv ".format(i)))
+#    if arv==int(arv):
+#        r+=1
+#print("Täisarvude arv on "+str(r))
 
 
-#2
-#for
-A=int(input("Sisestage number A: "))
-arv = 0
-for i in range(1, A + 1):
-    arv += i
-print(f"Kõigi naturaalarvude summa alates 1 enne {A} (kasutades loop'i for): {arv}")
+##2
+##for
+#A=int(input("Sisestage number A: "))
+#arv = 0
+#for i in range(1, A + 1):
+#    arv += i
+#print(f"Kõigi naturaalarvude summa alates 1 enne {A} (kasutades loop'i for): {arv}")
 
-#while True
-A = int(input("Sisestage number A: "))
-arv = 0
-i = 1
-while True:
-    arv += i
-    i += 1
-    if i > A:
-        break
-print(f"Kõigi naturaalarvude summa alates 1 enne {A} (kasutades loop'i while True): {arv}")
+##while True
+#A = int(input("Sisestage number A: "))
+#arv = 0
+#i = 1
+#while True:
+#    arv += i
+#    i += 1
+#    if i > A:
+#        break
+#print(f"Kõigi naturaalarvude summa alates 1 enne {A} (kasutades loop'i while True): {arv}")
 
-#while
-A = int(input("Sisestage number A: "))
-arv = 0
-i = 1
-while i <= A:
-    arv += i
-    i += 1
-print(f"Kõigi naturaalarvude summa alates 1 enne {A} (kasutades loop'i while): {arv}")
+##while
+#A = int(input("Sisestage number A: "))
+#arv = 0
+#i = 1
+#while i <= A:
+#    arv += i
+#    i += 1
+#print(f"Kõigi naturaalarvude summa alates 1 enne {A} (kasutades loop'i while): {arv}")
 
-#3
-#for
-product_for = 1
-for i in range(8):
-    num = float(input("Sisestage number: "))
-    if num > 0:
-        product_for *= num
-print(f"Positiivsete arvude korrutis: {product_for}")
+##3
+##for
+#product_for = 1
+#for i in range(8):
+#    num = float(input("Sisestage number: "))
+#    if num > 0:
+#        product_for *= num
+#print(f"Positiivsete arvude korrutis: {product_for}")
 
-#while True
-product_while_true = 1
-count = 0
-while True:
-    num = float(input("Sisestage number: "))
-    if num > 0:
-        product_while_true *= num
-        count += 1
-    if count == 8:
-        break
-print(f"Positiivsete arvude korrutis: {product_while_true}")
+##while True
+#product_while_true = 1
+#count = 0
+#while True:
+#    num = float(input("Sisestage number: "))
+#    if num > 0:
+#        product_while_true *= num
+#        count += 1
+#    if count == 8:
+#        break
+#print(f"Positiivsete arvude korrutis: {product_while_true}")
 
-#while
-product_while = 1
-count = 0
+##while
+#product_while = 1
+#count = 0
 
-while count < 8:
-    num = float(input("Sisestage number: "))
-    if num > 0:
-        product_while *= num
-        count += 1
-print(f"Positiivsete arvude korrutis: {product_while}")
+#while count < 8:
+#    num = float(input("Sisestage number: "))
+#    if num > 0:
+#        product_while *= num
+#        count += 1
+#print(f"Positiivsete arvude korrutis: {product_while}")
 
 
 ##14
@@ -105,6 +105,12 @@ print(f"Positiivsete arvude korrutis: {product_while}")
 #    ba+=1
 #vb=i%maht
 #print("Kokku on vaja {0} bussi ja viimasel sõidavad {1} inimest".format(ba,vb))
+
+#15
+for j in range(0,10,1):
+    for i in range(0,10,1):
+        print(f"{i:5}",end=" ")
+    print()
 
 
 
