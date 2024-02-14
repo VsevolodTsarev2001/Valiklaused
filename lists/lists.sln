@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "lists", "lists\lists.pyproj", "{80640D36-5B03-41A6-9D7B-EEE389F08CBB}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Praktiline_iseseisevtöö_listid", "Praktiline_iseseisevtöö_listid\Praktiline_iseseisevtöö_listid.pyproj", "{814DC448-932C-4FB1-9DAC-211C086683C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80640D36-5B03-41A6-9D7B-EEE389F08CBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80640D36-5B03-41A6-9D7B-EEE389F08CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{814DC448-932C-4FB1-9DAC-211C086683C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{814DC448-932C-4FB1-9DAC-211C086683C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56878C4E-75B2-457A-A870-572F289410AD}
+	EndGlobalSection
+EndGlobal

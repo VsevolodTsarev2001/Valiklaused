@@ -1,5 +1,6 @@
 from random import *
 from ssl import HAS_TLSv1
+from webbrowser import MacOSX
 #1
 while True:
     try:
@@ -81,6 +82,32 @@ print(f"Keskmine: {vastus:.3f}")
 
 
 #4 вариант 5 задача
+#5.1
+#while True:
+#    try:
+#        K=int(input("Mitu kotleti sul on? "))
+#        if K>0:break
+#    except ValueError:
+#        print("Vale tüüp")
+#while True:
+#    try:
+#        M=int(input("Mitu kotleti ühel pannil? "))
+#        if M>0:break
+#    except ValueError:
+#        print("Vale tüüp")
+#pann=0
+#lisapann=0
+#while K>0:
+#    if K>=M:
+#        K-=M
+#        pann+=1
+#        print(f"Praetud: {pann} tk")
+#    elif K<M:
+#        lisapann+=1
+#        print(f"Praetud: {lisapann} tk")
+#        break
+#print(f"Täispannid: {pann} ja veel on vaja {lisapann}")
+#5.2
 while True:
     try:
         K=int(input("Mitu kotleti sul on? "))
@@ -94,14 +121,12 @@ while True:
     except ValueError:
         print("Vale tüüp")
 pann=0
-lisapann=0
-while K>0:
-    if K>=M:
-        K-=M
+while K>M:
+    K-=M 
+    pann+=1
+    print(f"Praetud:{pann} tk")
+    if K<M:
         pann+=1
         print(f"Praetud: {pann} tk")
-    elif K<M:
-        lisapann+=1
-        print(f"Praetud: {lisapann} tk")
-        break
-print(f"Täispannid: {pann} ja veel on vaja {lisapann}")
+print(f"Kokku oli praetud: {pann} pannid")
+print()
