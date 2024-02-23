@@ -129,78 +129,77 @@ from time import sleep
 #    max_number=max(numbers)
 #numbers[numbers.index(max_number)]=max
 
-#9
-while True:
-    try:
-        name = input("Sisestage nimi: ").strip()
-        if not name.isalpha():
-            raise ValueError("Nimi võib sisaldada ainult tähti.")
-        break
-    except ValueError as e:
-        print(e)
+##9
+#while True:
+#    try:
+#        name = input("Sisestage nimi: ").strip()
+#        if not name.isalpha():
+#            raise ValueError("Nimi võib sisaldada ainult tähti.")
+#        break
+#    except ValueError as e:
+#        print(e)
 
-print(f"Tere, {name.capitalize()}!")
+#print(f"Tere, {name.capitalize()}!")
 
-vowels = 0
-consonants = 0
-for letter in name:
-    if letter.lower() in 'aeiouõäöü':
-        vowels += 1
-    else:
-        consonants += 1
+#vowels = 0
+#consonants = 0
+#for letter in name:
+#    if letter.lower() in 'aeiouõäöü':
+#        vowels += 1
+#    else:
+#        consonants += 1
 
-print(f"Tähtede arv: {len(name)}")
-print(f"Vokaalide arv: {vowels}")
-print(f"Konsonantide arv: {consonants}")
+#print(f"Tähtede arv: {len(name)}")
+#print(f"Vokaalide arv: {vowels}")
+#print(f"Konsonantide arv: {consonants}")
 
-unique_letters = sorted(set(name.lower()))
-print("Tähestiku järjestuses nimi:", ", ".join(unique_letters))
+#unique_letters = sorted(set(name.lower()))
+#print("Tähestiku järjestuses nimi:", ", ".join(unique_letters))
 
 
 
-#16
+##16
 # Järjend vastustega
-vastused = ["Jah, kindlasti!", "Jah!", "Võib-olla!", "Ei!"]
+#vastused = ["Jah, kindlasti!", "Jah!", "Võib-olla!", "Ei!"]
 
-print("Tere tulemast küsimuste ja vastuste programmi!")
+#print("Tere tulemast küsimuste ja vastuste programmi!")
 
-while True:
-    input("Küsige jah/ei küsimus: ")
-    vastus = choice(vastused)
-    print("Vastus:", vastus)
-    if input("Kas soovite jätkata (jah/ei)? ").lower() != "jah":
-        print("Aitäh ja head aega!")
-        break
+#while True:
+#    input("Küsige jah/ei küsimus: ")
+#    vastus = choice(vastused)
+#    print("Vastus:", vastus)
+#    if input("Kas soovite jätkata (jah/ei)? ").lower() != "jah":
+#        print("Aitäh ja head aega!")
+#        break
 
 
 
 #18
-print("Tere tulemast vene ruletti.!")
-print("Revolveris on 6 padrunit, millest üks on tühi.")
+#print("Tere tulemast vene ruletti.!")
+#print("Revolveris on 6 padrunit, millest üks on tühi.")
+#while True:
+#    print("\nMe alustame uut mängu!")
+#    revolver = [0, 0, 0, 0, 0, 0]
+#    revolver[randint(0, 5)] = 1
+#    input("Trummi keeramiseks vajutage Enter...")
+#    print("Trummi keerutamine...")
+#    for i in range(20):
+#        print("*",end="")
+#        sleep(random())
+#    print()
+#    bullet_position = randint(0, 5)
+#    if revolver[bullet_position] == 1:
+#        print("lask!")
+#        print("Game over!")
+#    else:
+#        print("klick!")
+#        print("Sa jäid ellu!")
+#    play_again = input("Kas sa tahad uuesti mängida? (ja/ei): ").lower()
+#    if play_again != "ja":
+#        print("Aitäh mängimise eest! Kohtumiseni!")
+#        break
 
-while True:
-    print("\nMe alustame uut mängu!")
 
-    # Создаем список с патронами (1 - патрон, 0 - пусто)
-    revolver = [0, 0, 0, 0, 0, 0]
-    # Вставляем случайным образом один патрон
-    revolver[randint(0, 5)] = 1
 
-    input("Trummi keeramiseks vajutage Enter...")
-
-    print("Trummi keerutamine...")
-    sleep(2)  # Задержка для эффекта ожидания
-
-    # Выбираем случайный патрон
-    bullet_position = randint(0, 5)
-    if revolver[bullet_position] == 1:
-        print("lask!")
-        print("Game over!")
-    else:
-        print("klick!")
-        print("Sa jäid ellu!")
-
-    play_again = input("Kas sa tahad uuesti mängida? (ja/ei): ").lower()
-    if play_again != "ja":
-        print("Aitäh mängimise eest! Kohtumiseni!")
-        break
+A= [ 3, 4, -1, 5, 0, 10, -12]
+print([A[3]])
