@@ -45,7 +45,7 @@ def arithmetic(x: int, y: int, op:str) -> float:
         if x == 0 or y == 0:
             print("jagamine nulliga ei ole võimalik")
 
-def is_year_leap (aasta: int)->bool:
+def liigaasta (aasta: int)->bool:
     """Funktsioon otsustab kas aasta on liigaasta või ei ole.
     Tagastad True kui aasta on liigaasta ja False kui aasta on tavaline aasta.
 
@@ -59,11 +59,10 @@ def is_year_leap (aasta: int)->bool:
 
 
 def square(külg:float)->any:
-    """Funktsioon tagastab S,P,d
-
-
-
-    :rtype:any
+    """ funktsioon tagastab kolm väärtusi(umbermoot,pindala,diagonaal)
+    square(ruudukülg:float)
+    :param float ruudukülg: ruudu_külg sisestab kasutaja
+    :rtype: tuple
     """
     P=4*külg 
     S=külg**2
@@ -72,7 +71,10 @@ def square(külg:float)->any:
 
 
 def season (a:int)->str: 
-    """
+    """funktsioon tagastab hooaega nimetusi(talv, kevad, suvi,sügis)
+    season(a:int)
+    param int a: kuut sisestab kasutaja
+    return: str
     """
     while True:
         if a>0 and a<13:
@@ -91,3 +93,63 @@ def season (a:int)->str:
     elif 9<=a<=11:
         s="sügis"
     return s
+
+def is_prime(arv:int)->bool:
+    """funktsioon tagastab arvu(0,1000) kas ta on lihtne voi ei
+    is_prime(arv:int)
+    param int arv:arvu sisestab kasutaja
+    rtype:bool
+    """
+
+    y = 0
+    for i in range(1, arv + 1):
+        if arv % i == 0:
+            y += 1
+    if y > 2:
+        return False
+    else:
+        return True
+
+
+
+
+
+
+def date(paev:int,kuu:int,aasta:int)->bool:
+        """funktsioon tagastab true kui kuu paev on kalendris(paev,kuu,aasta)
+        date(paev:int,kuu:int,aasta:int)
+        :param int paev: paeva sisestab kasutaja
+        :param int kuu: kuu sisestab kasutaja
+        :param int aasta: aasta sisestab kasutaja
+        return:bool
+        """
+
+        paeva_in_kuu = {1: 31,
+                        2: 29 if liigaasta(aasta) else 28,
+                        3: 31,
+                        4: 30,
+                        5: 31,
+                        6: 30,
+                        7: 31,
+                        8: 31,
+                        9: 30,
+                        10: 31,
+                        11: 30,
+                        12: 31}
+
+        if 1 <= kuu <= 12 and 1 <= paev <= paeva_in_kuu[kuu]:
+            return True
+        else:
+            return False
+
+
+def pank(a:float,aasta:int)->bool:
+    """funktsioon tagastab summat mis on kontos kasutajal(a,aasta)
+    pank(a:float,aasta:int)
+    :param float a: a sisestab kasutaja
+    :param int aasta: aasta sisestab kasutaja
+    rtype:any
+    """
+    for i in range(aasta):
+        a *= 1.1
+    return a

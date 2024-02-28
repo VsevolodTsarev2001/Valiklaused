@@ -1,6 +1,28 @@
 from module1 import * #Summa as s
-for i in range(5):
-    [i] = 3
+
+
+
+#(5)
+a=float(input("sisestage a raha: "))
+aasta=int(input("Sisestage kui palju aastaks: "))
+
+print("teie tagastatud summa on: ",pank(a,aasta))
+
+
+
+
+#(7)
+paev=int(input("kirjutage paeva: "))
+kuu=int(input("kirjutage kuut: "))
+aasta=int(input("kirjutage aasta: "))
+
+print(date(paev, kuu, aasta))
+
+#(6)
+arv=int(input("Sisestage arvu: "))
+print(is_prime(arv))
+
+
 #(4)
 while True:
     try:
@@ -43,7 +65,7 @@ while True:
         break
     except:
         print("viga")
-a=is_year_leap(aasta)
+a=liigaasta(aasta)
 print(a)
 
 
