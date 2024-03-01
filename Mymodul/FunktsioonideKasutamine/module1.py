@@ -112,9 +112,6 @@ def is_prime(arv:int)->bool:
 
 
 
-
-
-
 def date(paev:int,kuu:int,aasta:int)->bool:
         """funktsioon tagastab true kui kuu paev on kalendris(paev,kuu,aasta)
         date(paev:int,kuu:int,aasta:int)
