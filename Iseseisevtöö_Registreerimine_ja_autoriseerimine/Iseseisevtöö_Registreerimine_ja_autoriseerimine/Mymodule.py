@@ -1,5 +1,8 @@
 from random import *
 import string
+import smtplib, ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 
 def Salasona(k: int):
@@ -60,13 +63,42 @@ def taasta_parool(l: list, p: list):
     nimi = input("Sisesta oma nimi:")
     if nimi in l:
         ind = l.index(nimi)
-        uus_parool = Salasona(5)  # Uue salasõna genereerimine
-        p[ind] = uus_parool
-        print("Teie uus parool on:", uus_parool)
+        forgotten_password = p[ind]  # Получаем забытый пароль
+        # Отправляем пароль по электронной почте
+        try:
+            context = ssl.create_default_context()
+            smtp_server = "smtp.gmail.com"
+            port = 587
+            sender_email = "seva.tsarev@gmail.com"  # Укажите вашу электронную почту
+            receiver_email = input("Sisesta oma emaili aadress, et saada unustatud parool: ")
+            password = input("Type your password and press enter: ")
+            subject = "Unustatud parool"
+            body = f"Teie unustatud parool on: {forgotten_password}"
+            
+            message = MIMEMultipart()
+            message["From"] = sender_email
+            message["To"] = receiver_email
+            message["Subject"] = subject
+            message.attach(MIMEText(body, "plain"))
+            msg = message.as_string()
+
+            server = smtplib.SMTP(smtp_server, port)
+            server.ehlo()
+            server.starttls(context=context)
+            server.ehlo()
+            server.login(sender_email, password)
+            server.sendmail(sender_email, receiver_email, msg)
+            print("Unustatud parool on saadetud teie e-posti aadressile.")
+        except Exception as e:
+            print("Midagi läks valesti:", e)
+        finally:
+            server.quit()
     else:
         print("Nimi ei ole nimekirjas!")
 #zbgi aydr mtrp stqf 
-
+def summa(a,b):
+    pass
+print(summa(4,2))
 
 
 
