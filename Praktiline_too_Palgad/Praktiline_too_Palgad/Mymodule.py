@@ -110,7 +110,7 @@ def sama_palk():
 def vordsed_palgad(i:list,p:list)->list:
     """
     """
-    nimed=[]
+    nimed={} #{key1:value,key2:value}, key1!=key2
     #for id_, palgad in enumerate(p):
     #    print(id_,palgad)
     for palk in p:
@@ -140,7 +140,21 @@ def palk_nimi_jargi(i:list,p:list)->dict:
     :param list p:Palgate järjend
     :rtype: list,list
     """
-
+    palgad={}
+    nimi=input("Nimi: ")
+    for nimi in i:
+        n=p.count(nimi)
+        ind=i.index(nimi)
+        if n>1:
+            subp=[]
+            for j in range(n):
+                palk=i[i.index(nimi,ind)]
+                subp.append(palk)
+                p.pop(ind)
+                i.pop(ind)
+                ind=+1
+            palgad[nimi]=subp
+    print(palgad) 
 
 # 8. Вывести список тех людей(с зарплатами), кто получает больше/меньше чем указанная сумма
 def filtreeri_palk(eraldi, summa):

@@ -6,7 +6,7 @@ inimesed = ["A", "B", "C", "D", "E"]
 
 
 while True:
-    print("0-Naita andmed veerudes\n1-andemete lisamine\n2-Andmete eemaldamine\n3-Kellel on suurim palk\n4-Kellel on vaiksem palk\n5-sorteerimine\n6-vordsed_palgad\n7-palk nimi jargi\n")
+    print("0-Naita andmed veerudes\n1-andemete lisamine\n2-Andmete eemaldamine\n3-Kellel on suurim palk\n4-Kellel on vaiksem palk\n5-Lalle\n6-vordsed_palgad\n7-palk nimi jargi\n")
     valik=int(input())
     if valik==1:
         inimesed,palgad=lisa_inimesi_ja_palgad(inimesed,palgad,int(input("Mitu inimest lisame? ")))
