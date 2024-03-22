@@ -2,12 +2,6 @@ from dataclasses import dataclass
 from os import system
 from stringprep import c22_specials
 from gtts import *
-def WB(a:int,c:int)->int:
-    b=a*c 
-    d=b//2
-    return b,d 
-print(WB)
- 
 def loe_failist(fail:str)->list:
     """Loeme failist read ja salvestame järjendisse. Funktsioon tagastab järjend
     :param str fail:

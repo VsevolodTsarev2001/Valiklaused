@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Praktiline_too_Numeroloogia_Pythagorase_ruut", "Praktiline_too_Numeroloogia_Pythagorase_ruut.pyproj", "{8CAD424E-5110-41FF-81F8-314E989E82CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8CAD424E-5110-41FF-81F8-314E989E82CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CAD424E-5110-41FF-81F8-314E989E82CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A8DE466-8307-42E3-B64C-077B81750F92}
+	EndGlobalSection
+EndGlobal

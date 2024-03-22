@@ -1,9 +1,37 @@
+from dataclasses import dataclass
+from os import system
+from stringprep import c22_specials
+from gtts import *
 from random import *
 import string
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+def kirjuta_pas_ja_log(fail:str,l=[], p=[]):
+    """Kirjutab failist andmed,mis oli sisestatud formaadis ""login:password" igas reas eraldi
+    :param str fail:
+    :param list l:
+    :param list p:
+    """
+    f=open(fail,'w',encoding="utf-8")
+    for i in range(len(l)):
+        f.write(l[i]+":"+p[i]+"\n")
+    f.close()
+def loe_pas_ja_log(fail:str)->any:
+    """Loeb failist andmed, mis oli sisestatud formaadis "login:password" igas reas eraldi
+    :param str fail:
+    :rtype: list
+    """
+    f=open(fail,'r',encoding="utf-8")#try
+    l=[]
+    p=[]
+    for line in f:
+        n=line.find(":")# login:password - разделитель
+        log.append(line[0:n].strip())
+        pas.append(line[n+1:len(line)].strip())
+    f.close()
+    return log,pas
 
 def Salasona(k: int):
     """Funktsion 
@@ -19,6 +47,9 @@ def Salasona(k: int):
 
 
 def Registreerimine(l:list,p:list):
+    """
+    """
+    kirjuta_pas_ja_log
     nimi=input("Sisesta oma nimi:")
     v=int(input("1-Ese koostan parooli\n2-Arvuti genireerib\n"))
     if v==1:
@@ -27,11 +58,12 @@ def Registreerimine(l:list,p:list):
         salasona=Salasona(5)
         l.append(nimi)
         p.append(salasona)
-
     return l,p
 
 
 def Autoriseerimine(l:list,p:list):
+    """
+    """
     nimi=input("Sisesta oma nimi:")
     salasona=input("Sisesta oma salasõna:")
     if nimi in l:
@@ -45,6 +77,8 @@ def Autoriseerimine(l:list,p:list):
 
 
 def muuda_parool(l: list, p: list):
+    """Muudab vana parooli uueks parooliks
+    """
     nimi = input("Sisesta oma nimi:")
     vana_parool = input("Sisesta oma vana parool:")
     if nimi in l:
@@ -60,6 +94,8 @@ def muuda_parool(l: list, p: list):
 
 
 def taasta_parool(l: list, p: list):
+    """Funktsion taastab parool teile emailise
+    """
     nimi = input("Sisesta oma nimi:")
     if nimi in l:
         ind = l.index(nimi)
@@ -96,7 +132,3 @@ def taasta_parool(l: list, p: list):
     else:
         print("Nimi ei ole nimekirjas!")
 #zbgi aydr mtrp stqf 
-
-
-
-
