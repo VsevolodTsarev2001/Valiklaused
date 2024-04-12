@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox as mb
 k=0
 def vajuta():
     global k
@@ -10,8 +11,12 @@ def vajuta_(event):
     nupp.configure(text=k)
 def tst_psse(event):
     t=textbox.get()
-    pealkiri.configure(text=t,width=len(t))
-    textbox.delete(0,END)
+    if t=="":
+        mb.showwarning("Tähelepanu","On vaja sisestada numbrid!")
+    else:
+        pealkiri.configure(text=t,width=len(t))
+        textbox.delete(0,END)
+        mb.showinfo("Aruanne","Tekst oli lisatud pealkirjasse")
 def valik():
     arv=var.get()
     textbox.delete(0,END)
