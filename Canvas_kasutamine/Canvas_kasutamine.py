@@ -89,7 +89,7 @@ def draw_infinite_shapes():
 
 def valgusfoor ():
         # Рисуем красный сигнал светофора
-    red_light=tahvel.create_oval(50, 50, 150, 150, fill="gray")
+    red_light = tahvel.create_oval(50, 50, 150, 150, fill="gray")
     # Рисуем желтый сигнал светофора
     yellow_light = tahvel.create_oval(50, 180, 150, 280, fill="gray")
     # Рисуем зеленый сигнал светофора
