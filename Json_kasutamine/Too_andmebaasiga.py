@@ -83,7 +83,7 @@ def generate_random_user():
     return (name, lastname, birthdate.strftime('%Y-%m-%d'), age, gender_id, nationality)
 
 def auto_insert_users(connection, num_users):
-    for _ in range(num_users):
+    for i in range(num_users):
         user_data = generate_random_user()
         execute_insert_query(connection, user_data)
 
