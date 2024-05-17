@@ -28,6 +28,18 @@ def execute_query(connection, query):
     except Error as e:
         print(f"Tekkis viga: {e}")
 
+# Andmebaasist päringu tulemuse lugemine
+
+def execute_read_query(connection, query):
+    cursor = connection.cursor()
+    result = None
+    try:
+        cursor.execute(query)
+        result = cursor.fetchall()
+        return result
+    except Error as e:
+        print(f"Tekkis viga: {e}")
+
 # Uue toote lisamine
 
 def add_product():
@@ -57,18 +69,6 @@ def display_products():
     """
     for row in execute_read_query(conn, select_products):
         tree.insert("", "end", values=row)
-
-# Andmebaasist päringu tulemuse lugemine
-
-def execute_read_query(connection, query):
-    cursor = connection.cursor()
-    result = None
-    try:
-        cursor.execute(query)
-        result = cursor.fetchall()
-        return result
-    except Error as e:
-        print(f"Tekkis viga: {e}")
 
 # Uue toote eemaldamine
 
@@ -153,6 +153,83 @@ def edit_product():
     except Error as e:
         messagebox.showerror("Viga", f"Viga toote '{toote_nimi}' hinna muutmisel: {e}")
 
+# Lisa uus kategooria
+
+def add_category():
+    kategooria_nimi = simpledialog.askstring("Lisa uus kategooria", "Palun sisestage uue kategooria nimi:")
+    if kategooria_nimi:
+        insert_category_query = f"""
+        INSERT INTO Kategooriad (kategooria_nimi)
+        VALUES ('{kategooria_nimi}');
+        """
+        try:
+            execute_query(conn, insert_category_query)
+            messagebox.showinfo("Edukas", f"Kategooria '{kategooria_nimi}' on lisatud.")
+            update_category_combobox()
+        except Error as e:
+            messagebox.showerror("Viga", f"Viga kategooria '{kategooria_nimi}' lisamisel: {e}")
+
+# Kustuta kategooria
+
+def delete_category():
+    kategooria_nimi = combo_kategooria.get()
+    delete_category_query = f"""
+    DELETE FROM Kategooriad
+    WHERE kategooria_nimi = '{kategooria_nimi}';
+    """
+    try:
+        execute_query(conn, delete_category_query)
+        messagebox.showinfo("Edukas", f"Kategooria '{kategooria_nimi}' on kustutatud.")
+        update_category_combobox()
+    except Error as e:
+        messagebox.showerror("Viga", f"Viga kategooria '{kategooria_nimi}' kustutamisel: {e}")
+
+# Lisa uus bränd
+
+def add_brand():
+    brändi_nimi = simpledialog.askstring("Lisa uus bränd", "Palun sisestage uue brändi nimi:")
+    if brändi_nimi:
+        insert_brand_query = f"""
+        INSERT INTO Brändid (brändi_nimi)
+        VALUES ('{brändi_nimi}');
+        """
+        try:
+            execute_query(conn, insert_brand_query)
+            messagebox.showinfo("Edukas", f"Bränd '{brändi_nimi}' on lisatud.")
+            update_brand_combobox()
+        except Error as e:
+            messagebox.showerror("Viga", f"Viga brändi '{brändi_nimi}' lisamisel: {e}")
+
+# Kustuta bränd
+
+def delete_brand():
+    brändi_nimi = combo_bränd.get()
+    delete_brand_query = f"""
+    DELETE FROM Brändid
+    WHERE brändi_nimi = '{brändi_nimi}';
+    """
+    try:
+        execute_query(conn, delete_brand_query)
+        messagebox.showinfo("Edukas", f"Bränd '{brändi_nimi}' on kustutatud.")
+        update_brand_combobox()
+    except Error as e:
+        messagebox.showerror("Viga", f"Viga brändi '{brändi_nimi}' kustutamisel: {e}")
+
+# Обновление списка категорий
+
+def update_category_combobox():
+    select_categories = "SELECT kategooria_nimi FROM Kategooriad;"
+    categories = execute_read_query(conn, select_categories)
+    combo_kategooria['values'] = [category[0] for category in categories]
+    combo_kategooria.current(0)
+
+# Обновление списка брендов
+
+def update_brand_combobox():
+    select_brands = "SELECT brändi_nimi FROM Brändid;"
+    brands = execute_read_query(conn, select_brands)
+    combo_bränd['values'] = [brand[0] for brand in brands]
+    combo_bränd.current(0)
 
 # Andmebaasiühenduse loomine
 
@@ -166,7 +243,7 @@ conn = create_connection(dbpath)
 root = tk.Tk()
 root.title("Toodete Haldamine")
 root.iconbitmap('finance.ico')
-root.geometry("825x600")
+root.geometry("825x700")
 
 # Sisestusväljad ja nupp uue toote lisamiseks
 
@@ -184,15 +261,11 @@ label_kategooria = tk.Label(root, text="Kategooria:")
 label_kategooria.grid(row=2, column=0, padx=5, pady=5)
 combo_kategooria = ttk.Combobox(root)
 combo_kategooria.grid(row=2, column=1, padx=5, pady=5)
-combo_kategooria["values"] = ["Elektroonika", "Riided", "Raamatud", "Kodumasinad", "Mööbel", "Kosmeetika"]
-combo_kategooria.current(0)
 
 label_bränd = tk.Label(root, text="Bränd:")
 label_bränd.grid(row=3, column=0, padx=5, pady=5)
 combo_bränd = ttk.Combobox(root)
 combo_bränd.grid(row=3, column=1, padx=5, pady=5)
-combo_bränd["values"] = ["Sony", "Nike", "Samsung", "Adidas", "Apple", "LG"]
-combo_bränd.current(0)
 
 btn_add_product = tk.Button(root, text="Lisa uus toode", command=add_product)
 btn_add_product.grid(row=4, column=0, columnspan=2, pady=10)
@@ -219,6 +292,20 @@ btn_delete_by_brand.grid(row=8, column=0, columnspan=2, pady=10)
 btn_edit_product = tk.Button(root, text="Muuda toodet", command=edit_product)
 btn_edit_product.grid(row=9, column=0, columnspan=2, pady=10)
 
+# Кнопки для добавления и удаления категорий
+btn_add_category = tk.Button(root, text="Lisa uus kategooria", command=add_category)
+btn_add_category.grid(row=10, column=0, columnspan=2, pady=10)
+
+btn_delete_category = tk.Button(root, text="Kustuta kategooria", command=delete_category)
+btn_delete_category.grid(row=11, column=0, columnspan=2, pady=10)
+
+# Кнопки для добавления и удаления брендов
+btn_add_brand = tk.Button(root, text="Lisa uus bränd", command=add_brand)
+btn_add_brand.grid(row=12, column=0, columnspan=2, pady=10)
+
+btn_delete_brand = tk.Button(root, text="Kustuta bränd", command=delete_brand)
+btn_delete_brand.grid(row=13, column=0, columnspan=2, pady=10)
+
 # Toodete kuvamise таблица
 
 tree = ttk.Treeview(root, columns=("Toote nimi", "Hind", "Kategooria", "Bränd"), show="headings")
@@ -226,13 +313,16 @@ tree.heading("Toote nimi", text="Toote nimi")
 tree.heading("Hind", text="Hind")
 tree.heading("Kategooria", text="Kategooria")
 tree.heading("Bränd", text="Bränd")
-tree.grid(row=10, column=0, columnspan=2, padx=10, pady=10)
+tree.grid(row=14, column=0, columnspan=2, padx=10, pady=10)
 
 # Andmete kuvamine tabelisse
 
+update_category_combobox()
+update_brand_combobox()
 display_products()
 root.mainloop()
 
 # Andmebaasiühenduse sulgemine
 
 conn.close()
+
